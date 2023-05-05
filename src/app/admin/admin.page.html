@@ -1,0 +1,93 @@
+<ion-content [fullscreen]="true">
+  <div class="contenido">  
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-card (click)="setOpen(true)">
+            <img alt="Silhouette of mountains" src="../../assets/productos.jpeg" />
+            <ion-card-header>
+              <ion-card-title>2000 PRODUCTOS</ion-card-title>
+              <ion-card-subtitle>VENDIDOS HOY</ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content>
+              GANANCIAS: $15,0000
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <img alt="Silhouette of mountains" src="../../assets/orden.avif" />
+            <ion-card-header>
+              <ion-card-title>50 CLIENTES</ion-card-title>
+              <ion-card-subtitle>ANTENDIDOS HOY</ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content>
+              GANANCIAS: $15,0000
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <!--Modal para ver lista de productos vendidos-->
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>PRODUCTOS VENDIDOS</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-list>
+          <ion-item >
+            <ion-label class="producto-label1">N~. Nombre <b>Precio</b></ion-label>
+          </ion-item>
+          <ion-item *ngFor="let producto of this.productos; let i = index">
+            <ion-label class="producto-label">{{i+1}}. {{producto.nombre}} <b>${{producto.precio}}</b></ion-label>
+          </ion-item>
+          <ion-item >
+            <ion-label class="producto-label1"><b>Total: </b> ${{this.total}}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-grid >
+      <ion-row >
+        <ion-tabs>
+          <ion-router-outlet></ion-router-outlet>
+        
+          <ion-tab-bar slot="bottom">
+            <ion-tab-button tab="/">
+              <ion-icon name="apps-outline"></ion-icon>
+              Dashboard
+            </ion-tab-button>
+            <ion-tab-button tab="productos">
+              <ion-icon name="cart-outline"></ion-icon>
+              Productos
+            </ion-tab-button>
+            <ion-tab-button tab="ordenes">
+              <ion-icon name="bag-check-outline"></ion-icon>
+              Ordenes
+            </ion-tab-button>
+          </ion-tab-bar>
+        </ion-tabs>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+  
+</ion-footer>

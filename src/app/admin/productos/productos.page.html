@@ -1,0 +1,89 @@
+<ion-content [fullscreen]="true">
+  
+  <div class="contenido">  
+    <!--AGREGAR PRODUCTOS-->
+    <ion-button expand="block" color="success" (click)="setOpen(true)">Nuevo producto</ion-button>
+    <ion-modal [isOpen]="isModalOpen">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Nuevo Producto</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="setOpen(false)">Close</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <form [formGroup]="productoForm" enctype="multipart/form-data">
+              <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input formControlName="nombre" type="text" required></ion-input>
+              </ion-item>
+          
+              <ion-item>
+                <ion-label position="floating">Precio</ion-label>
+                <ion-input formControlName="precio" type="number" required></ion-input>
+              </ion-item>
+          
+              <ion-item>
+                <ion-input type="file" accept="image/*" formControlName="foto"></ion-input>
+              </ion-item>
+              
+          
+              <ion-item>
+                <ion-label position="floating">Categoría</ion-label>
+                <ion-select formControlName="categoria" required>
+                  <ion-select-option value="refrescos">Refrescos</ion-select-option>
+                  <ion-select-option value="tortas">Tortas</ion-select-option>
+                  <ion-select-option value="aperitivos">Aperitivos</ion-select-option>
+                  <ion-select-option value="golosinas">Golosinas</ion-select-option>
+                  <ion-select-option value="frituras">Frituras</ion-select-option>
+                  <ion-select-option value="desayunos">Desayunos</ion-select-option>
+                </ion-select>
+              </ion-item>
+          
+              <ion-button expand="block" type="submit" (click)="fromSubmit()">Guardar</ion-button>
+            </form>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+
+
+    <div class="cardProductos">
+      <ion-grid>
+        <ion-row>
+          <ion-col></ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+        <!--AGREGAR PRODUCTOS-->
+  </div>
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-grid >
+      <ion-row >
+        <ion-tabs>
+          <ion-tab-bar slot="bottom">
+            <ion-tab-button href="../admin">
+              <ion-icon name="apps-outline"></ion-icon>
+              Dashboard
+            </ion-tab-button>
+            <ion-tab-button tab="/">
+              <ion-icon name="cart-outline"></ion-icon>
+              Productos
+            </ion-tab-button>
+            <ion-tab-button href="../admin/ordenes">
+              <ion-icon name="bag-check-outline"></ion-icon>
+              Ordenes
+            </ion-tab-button>
+          </ion-tab-bar>
+        </ion-tabs>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+  
+</ion-footer>

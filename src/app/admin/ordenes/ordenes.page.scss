@@ -1,0 +1,18 @@
+ion-content{
+    --ion-background-color: #63594d;
+  }
+
+.contenido{
+    padding: 5%;
+    margin-top: 10px;
+    text-align: center;
+    .titulo{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 40px;
+    }
+
+    .cafeteria{
+        width: 50%;
+        margin-bottom: 20px;
+    }
+}
