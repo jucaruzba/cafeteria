@@ -25,3 +25,86 @@
 #container a {
   text-decoration: none;
 }
+
+ion-content{
+  --ion-background-color: #63594d;
+}
+
+
+.cardProductos {
+  padding: 20px;
+}
+
+
+ion-card {
+  max-width: 200px;
+  margin: 0 auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+ion-card:hover {
+  transform: translateY(-5px);
+}
+
+ion-card img {
+  max-width: 100%;
+}
+
+ion-card-header {
+  text-align: center;
+  padding: 10px;
+}
+
+ion-card-title {
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+ion-card-content {
+  text-align: center;
+  padding: 10px;
+}
+
+ion-card-subtitle {
+  margin-top: -1rem;
+  font-size: .8rem;
+  color: green;
+  ion-button{
+    width: 100%;
+  }
+}
+
+.btn{
+  margin-left: -40px;
+  margin-right: -80px;
+}
+
+ion-toolbar{
+  ion-title{
+    margin-top: 10px;
+  }
+  ion-button{
+    margin-left: 15%;
+  }
+}
+
+
+ion-modal{
+  .close{
+    margin-left: -30%;
+  }
+}
+
+ion-item {
+  --padding-start: 20px;
+  --padding-end: 20px;
+}
+
+ion-label {
+  font-weight: bold;
+}
+
+ion-text {
+  font-size: 20px;
+}

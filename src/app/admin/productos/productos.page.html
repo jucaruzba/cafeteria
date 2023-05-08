@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true">
-  
-  <div class="contenido">  
+
+  <div class="contenido">
     <!--AGREGAR PRODUCTOS-->
     <ion-button expand="block" color="success" (click)="setOpen(true)">Nuevo producto</ion-button>
     <ion-modal [isOpen]="isModalOpen">
@@ -15,57 +15,85 @@
         </ion-header>
         <ion-content class="ion-padding">
           <form [formGroup]="productoForm" enctype="multipart/form-data">
-              <ion-item>
-                <ion-label position="floating">Nombre</ion-label>
-                <ion-input formControlName="nombre" type="text" required></ion-input>
-              </ion-item>
-          
-              <ion-item>
-                <ion-label position="floating">Precio</ion-label>
-                <ion-input formControlName="precio" type="number" required></ion-input>
-              </ion-item>
-          
-              <ion-item>
-                <ion-input type="file" accept="image/*" formControlName="foto"></ion-input>
-              </ion-item>
-              
-          
-              <ion-item>
-                <ion-label position="floating">Categoría</ion-label>
-                <ion-select formControlName="categoria" required>
-                  <ion-select-option value="refrescos">Refrescos</ion-select-option>
-                  <ion-select-option value="tortas">Tortas</ion-select-option>
-                  <ion-select-option value="aperitivos">Aperitivos</ion-select-option>
-                  <ion-select-option value="golosinas">Golosinas</ion-select-option>
-                  <ion-select-option value="frituras">Frituras</ion-select-option>
-                  <ion-select-option value="desayunos">Desayunos</ion-select-option>
-                </ion-select>
-              </ion-item>
-          
-              <ion-button expand="block" type="submit" (click)="fromSubmit()">Guardar</ion-button>
-            </form>
+            <ion-item>
+              <ion-label position="floating">Nombre</ion-label>
+              <ion-input formControlName="nombre" type="text" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating">Precio</ion-label>
+              <ion-input formControlName="precio" type="number" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <input id="foto" type="file" accept="image/*" (change)="onFileSelected($event)">
+            </ion-item>
+
+
+            <ion-item>
+              <ion-label position="floating">Categoría</ion-label>
+              <ion-select formControlName="categoria" required>
+                <ion-select-option value="refrescos">Refrescos</ion-select-option>
+                <ion-select-option value="tortas">Tortas</ion-select-option>
+                <ion-select-option value="aperitivos">Aperitivos</ion-select-option>
+                <ion-select-option value="golosinas">Golosinas</ion-select-option>
+                <ion-select-option value="frituras">Frituras</ion-select-option>
+                <ion-select-option value="desayunos">Desayunos</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-button expand="block" type="submit" (click)="fromSubmit()">Guardar</ion-button>
+          </form>
         </ion-content>
       </ng-template>
     </ion-modal>
 
 
-
+<!--
     <div class="cardProductos">
       <ion-grid>
         <ion-row>
-          <ion-col></ion-col>
+          <ion-col size="6" *ngFor="let producto of productos">
+            <ion-card (click)="setProducto(false)">
+              <img src="{{producto.foto}}" alt="{{producto.nombre}}">
+              <ion-card-header>
+                <ion-card-title>{{producto.nombre}}</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-card-subtitle>$ {{producto.precio}}</ion-card-subtitle>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
         </ion-row>
       </ion-grid>
+
     </div>
-        <!--AGREGAR PRODUCTOS-->
+    -->
+    <ion-list>
+      <ion-item *ngFor="let producto of productos">
+        <ion-avatar slot="start">
+          <img src="{{producto.foto}}" alt="{{producto.nombre}}" />
+        </ion-avatar>
+        <ion-label>{{producto.nombre}}</ion-label>
+        <ion-label> ${{producto.precio}}</ion-label>
+        <ion-label class="btn">
+          <ion-button color="danger" (click)="onDelete(producto.id)">
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-label>
+
+      </ion-item>
+    </ion-list>
+
+
   </div>
 </ion-content>
 
 
 <ion-footer>
   <ion-toolbar>
-    <ion-grid >
-      <ion-row >
+    <ion-grid>
+      <ion-row>
         <ion-tabs>
           <ion-tab-bar slot="bottom">
             <ion-tab-button href="../admin">
@@ -85,5 +113,5 @@
       </ion-row>
     </ion-grid>
   </ion-toolbar>
-  
+
 </ion-footer>

@@ -30,4 +30,12 @@ export class AuthService {
       return null;
     }
   }
+  async onLogout() {
+    try {
+      await this.afAuth.signOut();
+      console.log("Usuario ha cerrado sesión correctamente");
+    } catch (error) {
+      console.log("Error en logout", error);
+    }
+  }
 }

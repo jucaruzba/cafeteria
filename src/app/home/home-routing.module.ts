@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
+  },
+  {
+    path: 'rastrear',
+    loadChildren: () => import('./rastrear/rastrear.module').then( m => m.RastrearPageModule)
   }
 ];
 
